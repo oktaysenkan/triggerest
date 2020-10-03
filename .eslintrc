@@ -10,5 +10,14 @@
   },
   "rules": {
     "no-plusplus": "off"
-  }
+  },
+  "overrides": [
+    {
+      "files": ["examples/**"],
+      "rules": {
+        "@typescript-eslint/no-unused-vars": "off",
+        "no-console": "off"
+      }
+    }
+  ]
 }
