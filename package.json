@@ -2,7 +2,22 @@
   "name": "triggerest",
   "version": "0.1.0",
   "description": "",
-  "main": "index.js",
+  "main": "./dist/src/triggerest.js",
+  "types": "./dist/src/triggerest.d.ts",
+  "keywords": [
+    "validator",
+    "npm"
+  ],
+  "author": "Oktay Şenkan <oktay.senkan@gmail.com>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/oktaysenkan/triggerest.git"
+  },
+  "homepage": "https://github.com/oktaysenkan/triggerest#readme",
+  "bugs": {
+    "url": "https://github.com/oktaysenkan/triggerest/issues"
+  },
   "scripts": {
     "build": "tsc -p tsconfig.json",
     "example": "ts-node examples/hook.ts",
@@ -10,10 +25,9 @@
     "lint:eslint": "eslint src/**",
     "lint:ts": "tsc",
     "lint": "npm run lint:ts && npm run lint:eslint",
-    "release": "standard-version"
+    "release": "standard-version",
+    "prepublish": "npm run build"
   },
-  "author": "",
-  "license": "ISC",
   "devDependencies": {
     "@types/express": "^4.17.8",
     "@types/faker": "^5.1.2",
