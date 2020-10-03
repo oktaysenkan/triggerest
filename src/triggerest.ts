@@ -37,15 +37,15 @@ class Triggerrest extends EventEmitter2 {
     const isAnyItemRemoved = Boolean(removedItems.length);
 
     if (isAnyItemAdded || isAnyItemRemoved) {
-      this.emit('changed', addedItems, removedItems);
+      this.emit('changed', addedItems, removedItems, result);
     }
 
     if (isAnyItemAdded) {
-      this.emit('added', addedItems);
+      this.emit('added', addedItems, result);
     }
 
     if (isAnyItemRemoved) {
-      this.emit('removed', removedItems);
+      this.emit('removed', removedItems, result);
     }
 
     this.lastValue = this.currentValue;
