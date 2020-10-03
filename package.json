@@ -18,6 +18,9 @@
   "bugs": {
     "url": "https://github.com/oktaysenkan/triggerest/issues"
   },
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "build": "tsc -p tsconfig.json",
     "example": "ts-node examples/hook.ts",
