@@ -5,8 +5,9 @@
   "main": "./dist/src/triggerest.js",
   "types": "./dist/src/triggerest.d.ts",
   "keywords": [
-    "validator",
-    "npm"
+    "webhook",
+    "api",
+    "trigger"
   ],
   "author": "Oktay Şenkan <oktay.senkan@gmail.com>",
   "license": "MIT",

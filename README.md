@@ -1,7 +1,9 @@
 # triggerest
 
 <p>
-  <img alt="Version" src="https://img.shields.io/github/package-json/v/oktaysenkan/triggerest?color=black" />
+  <a href="https://www.npmjs.com/package/triggerest" target="_blank">
+    <img alt="Version" src="https://img.shields.io/npm/v/triggerest?color=black" />
+  </a>
   <a href="https://github.com/oktaysenkan/triggerest/blob/master/LICENSE" target="_blank">
     <img alt="License: ISC" src="https://img.shields.io/badge/License-MIT-black.svg" />
   </a>
