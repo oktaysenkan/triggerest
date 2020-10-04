@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.1.0](https://github.com/oktaysenkan/triggerest/compare/v1.0.2...v1.1.0) (2020-10-04)
+
+
+### Features
+
+* **src/triggerest.ts:** identifier parameter is added ([02c6e1f](https://github.com/oktaysenkan/triggerest/commit/02c6e1f185347c2c15e7cf9443f36e1ee65d43c4))
+
 ### [1.0.2](https://github.com/oktaysenkan/triggerest/compare/v1.0.1...v1.0.2) (2020-10-04)
 
 
