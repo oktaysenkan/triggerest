@@ -2,8 +2,8 @@
   "name": "triggerest",
   "version": "1.0.1",
   "description": "",
-  "main": "./dist/src/triggerest.js",
-  "types": "./dist/src/triggerest.d.ts",
+  "main": "./dist/triggerest.js",
+  "types": "./dist/triggerest.d.ts",
   "keywords": [
     "webhook",
     "api",
