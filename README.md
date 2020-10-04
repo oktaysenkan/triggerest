@@ -31,7 +31,7 @@ const getTodos = async () => {
   return todos;
 };
 
-const triggerest = new Triggerest(getTodos);
+const triggerest = new Triggerest(getTodos, 'id');
 
 triggerest.on('result', (items) => {
   console.log('result received');
