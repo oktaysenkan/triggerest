@@ -27,7 +27,7 @@ const getMockArray = () =>
     }, 1000);
   });
 
-const triggerest = new Triggerest(getMockArray, 5000);
+const triggerest = new Triggerest(getMockArray, 'id', 5000);
 
 triggerest.on('result', (items) => {
   lastResult = items;

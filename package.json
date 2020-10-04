@@ -24,7 +24,7 @@
   ],
   "scripts": {
     "build": "tsc -p tsconfig.json",
-    "example": "ts-node examples/hook.ts",
+    "example": "ts-node examples/youtube.ts",
     "commit": "cz",
     "lint:eslint": "eslint src/**",
     "lint:ts": "tsc",

@@ -30,7 +30,7 @@ const mutateArray = () => {
 
 setTimeout(mutateArray, 5000);
 
-const triggerest = new Triggerest(getMockArray, 2000);
+const triggerest = new Triggerest(getMockArray, 'id', 2000);
 
 triggerest.on('changed', (addedItems: any[], removedItems: any[]) => {
   console.log('items changed');
