@@ -1,18 +1,22 @@
-import { EventEmitter2 } from 'eventemitter2';
+import { EventEmitter } from 'eventemitter3';
 import * as _ from 'lodash';
 
-class Triggerrest extends EventEmitter2 {
-  readonly func: () => Promise<any[]>;
+import EventMap from './interfaces/event-map';
+
+class Triggerest<T = any> extends EventEmitter<EventMap<T>> {
+  readonly func: () => Promise<T[]>;
 
   readonly identifier: string;
 
   readonly timeout: number;
 
-  lastValue: any[] = [];
+  lastValue: T[] = [];
 
-  currentValue: any[] = [];
+  currentValue: T[] = [];
 
   processCount = 0;
+
+  successfulProcessCount = 0;
 
   /**
    * Returns a new Triggerest instance
@@ -20,7 +24,7 @@ class Triggerrest extends EventEmitter2 {
    * @param timeout Function call delay
    */
   constructor(
-    func: () => Promise<any[]>,
+    func: () => Promise<T[]>,
     identifier: string,
     timeout = 60 * 1000
   ) {
@@ -36,44 +40,51 @@ class Triggerrest extends EventEmitter2 {
   }
 
   private async calculateDifference() {
-    const result = await this.func();
+    try {
+      const result = await this.func();
 
-    this.currentValue = result;
+      this.currentValue = result;
 
-    this.emit('result', result);
+      this.emit('result', result);
 
-    const addedItems = _.differenceBy(
-      this.currentValue,
-      this.lastValue,
-      this.identifier
-    );
+      const addedItems = _.differenceBy(
+        this.currentValue,
+        this.lastValue,
+        this.identifier
+      );
 
-    const removedItems = _.differenceBy(
-      this.lastValue,
-      this.currentValue,
-      this.identifier
-    );
+      const removedItems = _.differenceBy(
+        this.lastValue,
+        this.currentValue,
+        this.identifier
+      );
 
-    const isFirstTime = this.processCount === 0;
-    const isAnyItemAdded = Boolean(addedItems.length);
-    const isAnyItemRemoved = Boolean(removedItems.length);
+      const isFirstTime = this.successfulProcessCount === 0;
+      const isAnyItemAdded = Boolean(addedItems.length);
+      const isAnyItemRemoved = Boolean(removedItems.length);
 
-    if ((isAnyItemAdded || isAnyItemRemoved) && !isFirstTime) {
-      this.emit('changed', addedItems, removedItems, result);
+      if (!isFirstTime) {
+        if (isAnyItemAdded || isAnyItemRemoved) {
+          this.emit('changed', addedItems, removedItems, result);
+        }
+
+        if (isAnyItemAdded) {
+          this.emit('added', addedItems, result);
+        }
+
+        if (isAnyItemRemoved) {
+          this.emit('removed', removedItems, result);
+        }
+      }
+
+      this.lastValue = this.currentValue;
+      this.successfulProcessCount++;
+    } catch (error) {
+      this.emit('error', error);
+    } finally {
+      this.processCount++;
     }
-
-    if (isAnyItemAdded && !isFirstTime) {
-      this.emit('added', addedItems, result);
-    }
-
-    if (isAnyItemRemoved && !isFirstTime) {
-      this.emit('removed', removedItems, result);
-    }
-
-    this.lastValue = this.currentValue;
-
-    this.processCount++;
   }
 }
 
-export default Triggerrest;
+export default Triggerest;

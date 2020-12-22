@@ -13,7 +13,7 @@ const getVideos = async () => {
 
 const triggerest = new Triggerest(getVideos, 'id', 2000);
 
-triggerest.on('changed', (addedItems: any[], removedItems: any[]) => {
+triggerest.on('changed', (addedItems, removedItems) => {
   console.log('items changed');
 });
 
@@ -23,4 +23,8 @@ triggerest.on('added', (items) => {
 
 triggerest.on('removed', (items) => {
   console.log('removed', items);
+});
+
+triggerest.on('error', (error) => {
+  console.log('error', error.response.data);
 });
